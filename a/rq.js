@@ -1,7 +1,8 @@
-function Reset(){
+if(localStorage.getItem("fresh") == "yes"){
     New()
-    populate()
 }
+let available = [0, 1, 2, 3, 4, 5,]
+    let deleted = []
 
 let games = localStorage.getItem("games").split(",")
 let P1 = localStorage.getItem("P1")
@@ -11,7 +12,45 @@ let tracker = new Map()
 let G1 = ""
 let G2 = ""
 let G3 = ""
-let rTracker = Array.from(tracker)
+tracker.set(P1)
+tracker.set(P2)
+tracker.set(P3)
+
+console.log("yes")
+let num = 1
+for (let i = 0; i <= 3; i++) {
+    console.log("yes")
+    if (num = 1){
+
+    [G1, G2, G3] = testSame(G1, G2, G3) 
+   
+    console.log(G1 +" " +G2 + " "+ G3)
+    tracker.set(P1, [G1, G2, G3])
+    }
+
+    if (num = 2){
+    
+    
+    [G1, G2, G3] = testSame(G1, G2, G3) 
+    console.log(G1 +" " +G2 + " "+ G3)
+    tracker.set(P2, [G1, G2, G3])
+    }
+
+    if (num = 3){
+    
+    [G1, G2, G3] = testSame(G1, G2, G3) 
+    testSame(G1, G2, G3)
+    console.log(G1 +" " +G2 + " "+ G3)
+    tracker.set(P3, [G1, G2, G3])
+    }
+    
+    break
+}
+console.table(tracker)
+
+
+
+
 
     function testSame(v1,v2,v3){
 
@@ -25,6 +64,7 @@ let rTracker = Array.from(tracker)
     v1 = games[newo[0]]
     v2 = games[newo[1]]
     v3 = games[newo[2]]
+    console.log(newo)
     return [v1, v2, v3]
 
     
@@ -73,32 +113,3 @@ function testGame(value){
     }
     testGame(value)
 }
-function populate(){
-    for (let i = 0; i <= 3; i++) {
-    if (i = 1){
-
-    [G1, G2, G3] = testSame(G1, G2, G3) 
-  tracker.set(P1, [G1, G2, G3])
-    }
-
-    if (i = 2){
-    
-    
-    [G1, G2, G3] = testSame(G1, G2, G3) 
-    tracker.set(P2, [G1, G2, G3])
-    }
-
-    if (i = 3){
-    
-    [G1, G2, G3] = testSame(G1, G2, G3) 
-    testSame(G1, G2, G3)
-    tracker.set(P3, [G1, G2, G3])
-    }
-    console.log("apple")
-localStorage.setItem("tracker", rTracker)
-}
-
-} 
-let oTracker = localStorage.getItem("tracker")
-// let nTracker = new Map(oTracker)
-console.log(oTracker)
