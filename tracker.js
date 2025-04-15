@@ -73,7 +73,11 @@ function testGame(value){
     }
     testGame(value)
 }
+
+
 function populate(){
+
+
     for (let i = 0; i <= 3; i++) {
     if (i = 1){
 
@@ -96,9 +100,31 @@ function populate(){
     }
     console.log("apple")
 localStorage.setItem("tracker", rTracker)
+console.table(tracker)
+
+    let gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
+    console.log(gamo)
+for (let p of tracker.values()){
+    // p = Array.from(p)
+    console.log(p)
+    for (let z = 0; z < gamo.length ;z++) {
+        for (let i = 0; i < 3; i++) {
+            if(gamo[z][0] == p[i]){
+                gamo[z][1]++
+            }
+        }
+        
+    }
+}
+console.log(gamo)
 }
 
-} 
+}
+
+
+function popular(){
+
+}
+
 let oTracker = localStorage.getItem("tracker")
 // let nTracker = new Map(oTracker)
-console.log(oTracker)
