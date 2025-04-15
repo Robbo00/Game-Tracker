@@ -5,47 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+  crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="head">
+    <div class="heady">
     <h1>Ultimate Tracker</h1>
     </div>
     <div class="cont">
 <button class="reset" onclick=Reset()>New People and Games</button>
         <div class="pCont">
-        <div class="P1">
-            <h1 class="Phead1">.</h1>
-        <div class="Games1">
-            <p class="G1">
-            </p>
-            <p class="G2">
-            </p>
-            <p class="G3">
-            </p>
+        <div class="P1 P">
+            <h1 class="Phead1 head">Exe</h1>
+            <div class="disp">
+
+            
+                <ul class="Games1">
+                    <li class="G11">
+        
+                    </li>
+                    <li class="G12">
+        
+                    </li>
+                    <li class="G13">
+        
+                    </li>
+                </ul>
+                <ul class="Scores1">
+                    <li class="S11">
+        
+                    </li>
+                    <li class="S12">
+        
+                    </li>
+                    <li class="S13">
+        
+                    </li>
+                </ul></div>
+                <p class="A1"></p>
         </div>
+        <div class="P2 P">
+            <h1 class="Phead2 head">Exe</h1>
+            <div class="disp">
+
+            
+                <ul class="Games2">
+                    <li class="G21">
+        
+                    </li>
+                    <li class="G22">
+        
+                    </li>
+                    <li class="G23">
+        
+                    </li>
+                </ul>
+                <ul class="Scores2">
+                    <li class="S21">
+        
+                    </li>
+                    <li class="S22">
+        
+                    </li>
+                    <li class="S23">
+        
+                    </li>
+                </ul></div>
+                <p class="A2"></p>
         </div>
-        <div class="P2">
-            <h1 class="Phead2">.</h1>
-        <div class="Games2">
-            <p class="G1">
-            </p>
-            <p class="G2">
-            </p>
-            <p class="G3">
-            </p>
+        <div class="P3 P">
+            <h1 class="Phead3 head">Exe</h1>
+            <div class="disp">
+
+            
+            <ul class="Games3">
+                <li class="G31">
+    
+                </li>
+                <li class="G32">
+    
+                </li>
+                <li class="G33">
+    
+                </li>
+            </ul>
+            <ul class="Scores3">
+                <li class="S31">
+    
+                </li>
+                <li class="S32">
+    
+                </li>
+                <li class="S33">
+    
+                </li>
+            </ul></div>
+            <p class="A3"></p>
         </div>
-        </div>
-        <div class="P3">
-            <h1 class="Phead3">.</h1>
-        <div class="Games3">
-            <p class="G1">
-            </p>
-            <p class="G2">
-            </p>
-            <p class="G3">
-            </p>
-        </div>
-        </div>
+        <div class="sum">
+            <h1>Summary</h1>
+        <div>
+            <h2>Most Played Game</h2>
+            <p class="MP"></p>
+        </div>        
+    </div>
     </div>
             </div>
 
@@ -54,5 +119,11 @@
 </body>
 <script src="tracker.js">
 localStorage.setItem("fresh", "yes")
+
+$(document).ready(function(){
+            $(".Phead1").html(P1)
+            $(".Phead2").html(P2)
+            $(".Phead3").html(P3)
+})
 </script>    
 </html>

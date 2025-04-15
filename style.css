@@ -4,25 +4,49 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    color: #ECECEC;
 }
-.head{
+.heady{
     position: absolute;
     text-align: center;
     height: 100px;
     width: 100%;
-    color: white;
-    background-color: salmon;
+    background-color: #CBA135;
     
 
 }
 .cont{
     position: relative;
-    left: 40%;
+    left: 40px;
     top: 150px;
 
 }
 .pCont{
     display: flex;
     flex-direction: row;
-    
+    gap: 30px;
+    width: 1362px;
+    flex-wrap: wrap;
+}
+.P{
+    height: 315px;
+    width: 375px;
+    background-color: #CBA135;
+    border-radius: 15px;
+}
+.head{
+    text-align: center;
+}
+.sum{
+    text-align: center;
+    flex-wrap: wrap;
+    background-color: #CBA135;
+    border-radius: 15px;
+    width: 250px;
+    text-align: center;
+}
+.disp{
+    display: flex;
+    flex-direction: row;
+    gap: 180px;
 }
