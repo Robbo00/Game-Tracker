@@ -1,9 +1,12 @@
+// kicks off the functions to make a whole new tracker
 function Reset(){
     New()
     populate() 
 }
+// makes eveyr variable that will be used
 let scores, curr, great, games, P1, P2, P3, Vtracker, Ktracker, gamo, G1, G2, G3, tracker;
 
+// puts random stuff into the local storage so it can be completely painted over later
 function start(){
     //add 3 premade users
     //initialze variables
@@ -24,17 +27,18 @@ localStorage.setItem("game", gamo[curr][0])
 localStorage.setItem("num", gamo[curr][1])
 localStorage.setItem("Vscores", scores.values)
 localStorage.setItem("games", games)
-console.log("baka")
 localStorage.set("Ktracker", tracker.keys())
 New()
 }
+
+// detects if its their first time openeing wbesite and call start to make sure verything goes smoothly
 try{
     localStorage.getItem("Ktracker").split(",")} 
     catch(err){
      start()
 }
    
-
+// Sets vairbales that will be usde to build the page to the according informaiton
 scores = new Map()
 
 curr = localStorage.getItem("curr")
@@ -42,6 +46,7 @@ curr = localStorage.getItem("curr")
 great = 0
 
 games = localStorage.getItem("games").split(",")
+// have to use splice right here or there will be a blank field in the games array making some game slots turn up empty
 games.splice(0,1)
 
 P1 = localStorage.getItem("P1")
@@ -68,7 +73,7 @@ let Vscores = Array.from(localStorage.getItem("Vscores"))
 
  gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
 tracker.clear()
-
+// rebuilds the tracker map from local storage
 tracker.set(P1, [Vtracker[0], Vtracker[1], Vtracker[2]])
 
 tracker.set(P2, [Vtracker[3], Vtracker[4], Vtracker[5]])
@@ -79,28 +84,22 @@ let rTracker = Array.from(tracker)
 
 
     function testSame(v1,v2,v3){
-
+        // uses splice and psuh to shuffle games therefore making the games each person has random and making sure its not the same vlue
     let available = [0, 1, 2, 3, 4, 5,]
     let newo = []
         while (available.length> 0) {
         let d = Math.floor(Math.random() * (available.length))
         let picked = available.splice(d, 1)[0]
             newo.push(picked)   
-            console.log(available)
-            console.log(newo)
         }
-        console.log(games)
     v1 = games[newo[0]]
-    console.log(v1)
     v2 = games[newo[1]]
-    console.log(v2)
     v3 = games[newo[2]]
-    console.log(v3)
     return [v1, v2, v3]
 
     
 }
-
+// Gets INformatioin from the user to build the site
 function New(){
     localStorage.removeItem("games")
     let games = [
@@ -133,9 +132,9 @@ function New(){
     localStorage.setItem("P2", P2)
     localStorage.setItem("P3", P3)
 }
-
+// makes sure you dont put in duplicate games
 function testGame(value){
-    if(games.includes(value)){
+    if(games.includes(value) || value == ""){
     value = prompt("Oops, you already picked this game. Try again!")
     }
     else{
@@ -145,7 +144,7 @@ function testGame(value){
     testGame(value)
 }
 
-
+// uses a for loop and the previous test same function to get each eprsons set of games
 function populate(){
 
 
@@ -172,26 +171,21 @@ function populate(){
     }
     
 }
-console.log("apple")
 localStorage.setItem("Ktracker", null)
 localStorage.setItem("Vtracker", null)
 
 localStorage.setItem("Vtracker", Array.from(tracker.values()))
 // localStorage.setItem("Ktracker", Array.from(tracker.keys()))
 
-console.table(localStorage.getItem("tracker"))
-console.log(localStorage.getItem("tracker"))
 popular()
 }
 
-
+// uses for loops and arrays to traverse the map and determine the count of each value to then be put into a vairbale
 function popular(){
     gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
-console.log(gamo)
 
 for (let p of tracker.values()){
     // p = Array.from(p)
-    console.log(p)
     for (let z = 0; z < gamo.length ;z++) {
         for (let i = 0; i < 3; i++) {
             if(gamo[z][0] == p[i]){
@@ -201,7 +195,6 @@ for (let p of tracker.values()){
         
     }
 }
-console.log(gamo)
 for (let i = 0; i < gamo.length; i++) {
     if(gamo[i][1]>great){
         curr = i
@@ -209,14 +202,11 @@ for (let i = 0; i < gamo.length; i++) {
     }
 }
 $(".MP").html("Most popular game is " + gamo[curr][0] + " played by (" + gamo[curr][1] + ") players")
-console.log(gamo)
 localStorage.setItem("game", gamo[curr][0])
 localStorage.setItem("num", gamo[curr][1])
-console.log(localStorage.getItem("game"))
-console.log(localStorage.getItem("num"))
 }
 
-
+// Builds HTML page after all the information from the functions abovehas been accumulated 
 function print(){
 let con = [] 
 con = Array.from(tracker)
@@ -225,7 +215,6 @@ son = Array.from(scores)
 $(".Phead1").html(P1)
 $(".Phead2").html(P2)
 $(".Phead3").html(P3)
-console.log(con) 
 $(".G11").html(con[0][1][0])
 $(".G12").html(con[0][1][1])
 $(".G13").html(con[0][1][2])
@@ -250,7 +239,6 @@ $(".A1").html(Math.round((son[0][1][0] + son[0][1][1] + son[0][1][2]) / 3))
 $(".A2").html(Math.round((son[1][1][0] + son[1][1][1] + son[1][1][2]) / 3))
 $(".A3").html(Math.round((son[2][1][0] + son[2][1][1] + son[2][1][2]) / 3))
 
-console.log(gamo)
 $(".MP").html("Most popular game is " + localStorage.getItem("game") + " played by (" + localStorage.getItem("num") + ") players")
 }
 
@@ -259,8 +247,4 @@ scores.set(P2, [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100,
 scores.set(P3, [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100, ), Math.floor(Math.random() * 100, )])
 
 
-// console.log(localStorage.getItem("Ktracker"))
-console.log(localStorage.getItem("Vtracker"))
-console.table(tracker)
 print()
-console.log(Vscores)
