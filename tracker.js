@@ -3,37 +3,67 @@ function Reset(){
     populate() 
     score()
 }
-let scores = new Map()
+let scores, curr, great, games, P1, P2, P3, Vtracker, Ktracker, gamo, G1, G2, G3, tracker;
 
-let curr = localStorage.getItem("curr")
+function start(){
+    //add 3 premade users
+    //initialze variables
 
-let great = 0
+curr = 0
+great = 0
+tracker = new Map()
+tracker.set("blank", ["blank", "blank", "blank"])
+tracker.set("lank", ["lank", "lank", "lank"])
+tracker.set("ank", ["ank", "k", "b"])
+scores = new Map()
+scores.set(P1, [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100, ), Math.floor(Math.random() * 100, )])
+scores.set(P2, [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100, ), Math.floor(Math.random() * 100, )])
+scores.set(P3, [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100, ), Math.floor(Math.random() * 100, )])
+localStorage.setItem("Vtracker", Array.from(tracker.values()))
+gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
+localStorage.setItem("game", gamo[curr][0])
+localStorage.setItem("num", gamo[curr][1])
+localStorage.setItem("Vscores", scores.values)
+New()
+}
+try{
+    localStorage.getItem("Vtracker")
+} catch{
+     start()
+}
+   
 
-let games = localStorage.getItem("games").split(",")
+scores = new Map()
 
-let P1 = localStorage.getItem("P1")
+curr = localStorage.getItem("curr")
 
-let P2 = localStorage.getItem("P2")
+great = 0
 
-let P3 = localStorage.getItem("P3")
+games = localStorage.getItem("games").split(",")
 
-let Vtracker = localStorage.getItem("Vtracker").split(",")
+P1 = localStorage.getItem("P1")
 
-let Ktracker = localStorage.getItem("Ktracker").split(",")
+P2 = localStorage.getItem("P2")
+
+P3 = localStorage.getItem("P3")
+
+Vtracker = localStorage.getItem("Vtracker").split(",")
+
+Ktracker = localStorage.getItem("Ktracker").split(",")
 
 
-let tracker = new Map()
+ tracker = new Map()
 
-let G1 = ""
+G1 = ""
 
-let G2 = ""
+G2 = ""
 
-let G3 = ""
+ G3 = ""
 let Vscores = Array.from(localStorage.getItem("Vscores"))
 
 
 
-let gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
+ gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
 tracker.clear()
 
 tracker.set(P1, [Vtracker[0], Vtracker[1], Vtracker[2]])
@@ -84,6 +114,9 @@ function New(){
     let P1 = prompt("Pick the 1st person")
     let P2 = prompt("Pick the 2nd person")
     let P3 = prompt("Pick the 3rd person")
+    //let new_user = Prompts
+    //prompt for user name and scores
+    //use username the set local storage id
     
     
     
