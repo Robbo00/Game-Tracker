@@ -1,14 +1,13 @@
 function Reset(){
     New()
     populate() 
-    score()
 }
 let scores, curr, great, games, P1, P2, P3, Vtracker, Ktracker, gamo, G1, G2, G3, tracker;
 
 function start(){
     //add 3 premade users
     //initialze variables
-
+games = ["li", "bi", "cci", "di", "ew", "qw"]
 curr = 0
 great = 0
 tracker = new Map()
@@ -24,11 +23,14 @@ gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0
 localStorage.setItem("game", gamo[curr][0])
 localStorage.setItem("num", gamo[curr][1])
 localStorage.setItem("Vscores", scores.values)
+localStorage.setItem("games", games)
+console.log("baka")
+localStorage.set("Ktracker", tracker.keys())
 New()
 }
 try{
-    localStorage.getItem("Vtracker")
-} catch{
+    localStorage.getItem("Ktracker").split(",")} 
+    catch(err){
      start()
 }
    
@@ -40,6 +42,7 @@ curr = localStorage.getItem("curr")
 great = 0
 
 games = localStorage.getItem("games").split(",")
+games.splice(0,1)
 
 P1 = localStorage.getItem("P1")
 
@@ -83,17 +86,23 @@ let rTracker = Array.from(tracker)
         let d = Math.floor(Math.random() * (available.length))
         let picked = available.splice(d, 1)[0]
             newo.push(picked)   
+            console.log(available)
+            console.log(newo)
         }
+        console.log(games)
     v1 = games[newo[0]]
+    console.log(v1)
     v2 = games[newo[1]]
+    console.log(v2)
     v3 = games[newo[2]]
+    console.log(v3)
     return [v1, v2, v3]
 
     
 }
 
 function New(){
-    localStorage.setItem("games", "")
+    localStorage.removeItem("games")
     let games = [
     ]
     
@@ -118,14 +127,11 @@ function New(){
     //prompt for user name and scores
     //use username the set local storage id
     
-    
-    
     localStorage.setItem("fresh", "no")
     localStorage.setItem("games", games)
     localStorage.setItem("P1", P1)
     localStorage.setItem("P2", P2)
     localStorage.setItem("P3", P3)
-
 }
 
 function testGame(value){
@@ -180,7 +186,8 @@ popular()
 
 
 function popular(){
-
+    gamo = [[games[0], 0], [games[1], 0], [games[2], 0], [games[3], 0], [games[4], 0], [games[5], 0]]
+console.log(gamo)
 
 for (let p of tracker.values()){
     // p = Array.from(p)
@@ -202,8 +209,11 @@ for (let i = 0; i < gamo.length; i++) {
     }
 }
 $(".MP").html("Most popular game is " + gamo[curr][0] + " played by (" + gamo[curr][1] + ") players")
+console.log(gamo)
 localStorage.setItem("game", gamo[curr][0])
 localStorage.setItem("num", gamo[curr][1])
+console.log(localStorage.getItem("game"))
+console.log(localStorage.getItem("num"))
 }
 
 
